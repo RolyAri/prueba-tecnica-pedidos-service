@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  # BD Postgres para pedidos
+  postgres:
+    image: postgres:15
+    container_name: pedidos-db
+    environment:
+      POSTGRES_DB: pedidosdb
+      POSTGRES_USER: pedidos
+      POSTGRES_PASSWORD: pedidos
+    ports:
+      - "5431:5431"
+    expose:
+      - 5431
+    command: -p 5431

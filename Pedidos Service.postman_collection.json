@@ -1,0 +1,57 @@
+{
+  "info": {
+    "_postman_id": "f5e9f78a-120f-4510-99ea-3a6f1f52ba5c",
+    "name": "Pedidos Service",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "26615757"
+  },
+  "item": [
+    {
+      "name": "Cargar Pedidos",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJyb2x5Iiwic2NvcGUiOiJhcGkiLCJpYXQiOjE3MDAwMDAwMDAsImV4cCI6MTg5MzQ1NjAwMH0.cglIOzmcciAo3Vo7_U0AlZMIaj9EZ5XgAupYl7CpTJI",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Idempotency-Key",
+            "value": "123",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "type": "file",
+              "uuid": "3a5d36d4-4b86-4809-a4ea-89708f53b726",
+              "src": "/D:/Roly/Proyectos/dinet-prueba/pedidos/src/main/resources/samples/sample1.csv"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:8080/pedidos/cargar",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "pedidos",
+            "cargar"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

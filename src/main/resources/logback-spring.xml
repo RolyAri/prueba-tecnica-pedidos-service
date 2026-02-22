@@ -1,0 +1,27 @@
+<configuration>
+
+    <!-- Console appender normal para logs de Spring Boot -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Console appender JSON para los logs de la app -->
+    <appender name="JSON" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+            <customFields>{"app":"pedidos-service"}</customFields>
+        </encoder>
+    </appender>
+
+    <!-- Root logger: todo lo que no es de la app va al STDOUT -->
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+    <!-- Logger de la aplicacion usa JSON -->
+    <logger name="com.dinet.pedidos" level="INFO" additivity="false">
+        <appender-ref ref="JSON"/>
+    </logger>
+
+</configuration>
