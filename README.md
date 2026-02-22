@@ -75,7 +75,28 @@ X-Correlation-Id: `<opcional>`
 Body:
 
 multipart/form-data\
-file: sample1.csv
+file: sample1.csv (ejemplos de archivos CSV en la carpeta /resources/samples/)
+
+------------------------------------------------------------------------
+
+## 📘 Documentación API (OpenAPI / Swagger)
+
+El microservicio expone documentación automática mediante **OpenAPI 3**
+utilizando **springdoc-openapi**.
+
+------------------------------------------------------------------------
+
+### 🔎 Swagger UI
+
+Interfaz gráfica interactiva disponible en:
+
+http://localhost:8080/swagger-ui/index.html
+
+------------------------------------------------------------------------
+
+### 📄 Especificación OpenAPI (JSON)
+
+http://localhost:8080/v3/api-docs
 
 ------------------------------------------------------------------------
 
@@ -119,10 +140,6 @@ El microservicio actúa como OAuth2 Resource Server.
 -   No emite tokens.
 -   Valida JWT firmados externamente.
 -   Todas las rutas están protegidas.
-
-Configuración:
-
-spring.security.oauth2.resourceserver.jwt.secret
 
 ------------------------------------------------------------------------
 
