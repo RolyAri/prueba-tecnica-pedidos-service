@@ -75,7 +75,12 @@ X-Correlation-Id: `<opcional>`
 Body:
 
 multipart/form-data\
-file: sample1.csv (ejemplos de archivos CSV en la carpeta /resources/samples/)
+file: sample2.csv (ubicado en src/main/resources/samples/)
+
+Archivos de ejemplo disponibles:
+
+- sample1.csv → 100 registros
+- sample2.csv → 1000 registros
 
 ------------------------------------------------------------------------
 
