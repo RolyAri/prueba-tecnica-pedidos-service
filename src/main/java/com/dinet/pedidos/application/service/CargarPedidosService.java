@@ -145,12 +145,22 @@ public class CargarPedidosService implements CargarPedidosUseCase {
 
     private Pedido mapear(CSVRecord record) {
 
+        EstadoPedido estado;
+
+        try {
+            estado = EstadoPedido.valueOf(record.get("estado"));
+        } catch (IllegalArgumentException | NullPointerException e) {
+            throw new BusinessException(
+                    "ESTADO_INVALIDO"
+            );
+        }
+
         return Pedido.builder()
                 .numeroPedido(record.get("numeroPedido"))
                 .clienteId(record.get("clienteId"))
                 .zonaId(record.get("zonaEntrega"))
                 .fechaEntrega(LocalDate.parse(record.get("fechaEntrega")))
-                .estado(EstadoPedido.valueOf(record.get("estado")))
+                .estado(estado)
                 .requiereRefrigeracion(Boolean.parseBoolean(record.get("requiereRefrigeracion")))
                 .build();
     }
