@@ -148,6 +148,81 @@ El microservicio actúa como OAuth2 Resource Server.
 
 ------------------------------------------------------------------------
 
+## 🔐 Generación de JWT para Pruebas (Postman)
+
+👉 https://jwt.io
+
+### Configuración
+
+- Algoritmo: `HS256`
+- Secret (solo para entorno de desarrollo):
+
+```
+mi-clave-super-secreta-para-dev-que-tenga-32-bytes
+```
+
+> ⚠ **Importante:**  
+> Este secret es únicamente para pruebas en entorno local.  
+> **Nunca debe exponerse públicamente ni versionarse en repositorios.**
+>
+> 🔐 Buenas prácticas recomiendan:
+> - Usar variables de entorno  
+> - No compartir secrets en documentación pública  
+
+---
+
+### Payload de ejemplo
+
+```json
+{
+  "sub": "usuario-test",
+  "scope": "ROLE_USER",
+  "iat": 1735689600,
+  "exp": 1893456000
+}
+```
+
+> Asegúrate de que `exp` sea mayor al timestamp actual.
+
+---
+
+### Usar en Postman
+
+En la request:
+
+- Ir a **Authorization**
+- Tipo: **Bearer Token**
+- Pegar el token generado
+
+O agregar manualmente el header:
+
+```
+Authorization: Bearer TU_TOKEN_GENERADO
+```
+
+---
+
+------------------------------------------------------------------------
+
+## 📦 Colección Postman
+
+También se incluye la colección:
+
+```
+Pedidos Service.postman_collection.json
+```
+
+Puedes importarla directamente en Postman:
+
+1. Abrir Postman  
+2. Clic en **Import**  
+3. Seleccionar el archivo `Pedidos Service.postman_collection.json`
+
+> ℹ La colección ya incluye un **Bearer Token por defecto** para facilitar las pruebas iniciales.  
+> Si el token expira, puedes generar uno nuevo siguiendo la sección anterior y reemplazarlo en la configuración de Authorization.
+
+------------------------------------------------------------------------
+
 ## 🔁 Idempotencia
 
 Implementación:
