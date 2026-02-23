@@ -75,7 +75,7 @@ X-Correlation-Id: `<opcional>`
 Body:
 
 multipart/form-data\
-file: sample2.csv (ubicado en src/main/resources/samples/)
+file: sample2.csv (ubicado en ./samples/)
 
 Archivos de ejemplo disponibles:
 
