@@ -21,12 +21,14 @@ import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.InputStreamReader;
 import java.security.MessageDigest;
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -146,6 +148,7 @@ public class CargarPedidosService implements CargarPedidosUseCase {
     private Pedido mapear(CSVRecord record) {
 
         EstadoPedido estado;
+        LocalDate fechaEntrega;
 
         try {
             estado = EstadoPedido.valueOf(record.get("estado"));
@@ -155,11 +158,19 @@ public class CargarPedidosService implements CargarPedidosUseCase {
             );
         }
 
+        try {
+            fechaEntrega = LocalDate.parse(record.get("fechaEntrega"));
+        } catch (DateTimeParseException e) {
+            throw new BusinessException(
+                    "FECHA_INVALIDA"
+            );
+        }
+
         return Pedido.builder()
                 .numeroPedido(record.get("numeroPedido"))
                 .clienteId(record.get("clienteId"))
                 .zonaId(record.get("zonaEntrega"))
-                .fechaEntrega(LocalDate.parse(record.get("fechaEntrega")))
+                .fechaEntrega(fechaEntrega)
                 .estado(estado)
                 .requiereRefrigeracion(Boolean.parseBoolean(record.get("requiereRefrigeracion")))
                 .build();
