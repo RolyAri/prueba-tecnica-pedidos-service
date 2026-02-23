@@ -7,6 +7,23 @@ idempotencia.
 
 ------------------------------------------------------------------------
 
+## 📚 Índice
+
+- [🏗 Arquitectura](#-arquitectura)
+- [⚙ Tecnologías](#-tecnologías)
+- [🚀 Ejecución Local](#-ejecución-local)
+- [📌 Endpoint Principal + CSV de ejemplo](#-endpoint-principal)
+- [📘 Documentación API](#-documentación-api-openapi--swagger)
+- [📄 Formato CSV](#-formato-csv)
+- [🔁 Estrategia de Batch](#-estrategia-de-batch)
+- [🔐 Seguridad](#-seguridad)
+- [📦 Colección Postman](#-colección-postman)
+- [🔁 Idempotencia](#-idempotencia)
+- [📈 Observabilidad](#-observabilidad)
+- [🧪 Testing](#-testing)
+
+------------------------------------------------------------------------
+
 ## 🏗 Arquitectura
 
 El proyecto sigue el patrón **Arquitectura Hexagonal (Ports &
